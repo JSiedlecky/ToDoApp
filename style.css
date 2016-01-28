@@ -1,0 +1,10 @@
+#mainBox {
+    margin: 20px 0;
+}
+
+#rightarrow {
+    height: 100%;
+    width: 10%;
+    opacity: 0.6;
+    float: right;
+}

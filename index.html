@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="utf-8">
+    
+    <title>ToDoApp by JSiedlecky</title>
+    
+    <meta name="author" content="Jakub Siedlecki">
+    <meta name="application-name" content="ToDoApp by JSiedlecky">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="script.js"></script>
+    
+</head>
+<body ng-app="ToDoApp" ng-controller="ToDoAppCtrl">
+   
+    <div class="container">
+        <div class="jumbotron" id="mainBox">
+            <h1>Welcome in my ToDoApp!</h1>
+            <p>Here you can store all your plans, things you need or want to do.<br>Thoes will be only visable on the computer you wrote them in.</p>
+        </div>
+        
+        <h3>Add a task</h3>
+        Name: <input type="text" ng-model="nameOfTask"> 
+        Task: <input type="text" ng-model="contentOfTask"> 
+        Deadline: <input type="date" ng-model="dlOfTask"> 
+        <button type="button" class="btn btn-primary" ng-click="addTask()">Add it!</button> <br><br>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Added on</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="oneTask in tasks">
+                    <td><h4>{{oneTask.id}}</h4></td>
+                    <td>
+                        <h4>
+                            {{oneTask.name}} 
+                            <span id="rightarrow" ng-init="hideP = true;" ng-click="hideP = !hideP"><i ng-model="hideArrow(hideP)" class={{arrow}}></i></span>
+                        </h4>
+                        <p ng-hide="hideP">{{oneTask.task}}</p>
+                    </td>
+                    <td><h4>{{oneTask.status}}</h4></td>
+                    <td><h4>{{oneTask.addedOn}}</h4></td>
+                    <td><h4>{{oneTask.deadline}}</h4></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    
+</body>
+</html>
